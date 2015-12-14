@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="35dp"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/injected_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_purple"
+        android:gravity="center"
+        android:text="@string/injected_view_string"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+</LinearLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="textandiconmargin">10dp</dimen>
+    <dimen name="refresh_header_height_twitter">80dp</dimen>
+</resources>

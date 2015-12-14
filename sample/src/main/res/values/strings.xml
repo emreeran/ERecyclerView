@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ERecyclerView</string>
+    <string name="quick_return_header_text">QuickReturnHeader</string>
+    <string name="quick_return_footer_text">QuickReturnFooter</string>
+    <string name="header_view_1_text">HeaderView1</string>
+    <string name="footer_view_1_text">FooterView1</string>
+    <string name="injected_view_string">InjectedView</string>
+</resources>

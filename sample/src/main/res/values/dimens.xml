@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="quick_return_header_view_height">100dp</dimen>
+    <dimen name="quick_return_footer_view_height">75dp</dimen>
+</resources>
