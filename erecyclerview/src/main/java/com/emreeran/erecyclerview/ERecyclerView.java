@@ -386,7 +386,7 @@ public class ERecyclerView extends RecyclerView {
                 return;
             }
 
-            if (adapter != null) {
+            if (adapter != null && adapter.getItemCount() > 0) {
                 int adapterPosition = position - mListItemsStartPosition;
                 adapterPosition -= getInjectedViewCountUntilPosition(position);
                 adapter.onBindViewHolder(holder, adapterPosition);
