@@ -438,7 +438,7 @@ public class ERecyclerView extends RecyclerView {
                     } else {
                         return ITEM_HEADER;
                     }
-                } else {
+                } else if (mInjectedViewList.size() > 0){
                     return ITEM_INJECTED;
                 }
             }
@@ -502,9 +502,8 @@ public class ERecyclerView extends RecyclerView {
                     quickReturnHeaderPlaceholder.setLayoutParams(layoutParams);
 
                     mViewMap.put(0, quickReturnHeaderPlaceholder);
-                    mViewMap.put(1, mPullToRefreshView);
                     for (int i = 0; i < mHeaderViewList.size(); i++) {
-                        mViewMap.put(i + 2, mHeaderViewList.get(i));
+                        mViewMap.put(i + 1, mHeaderViewList.get(i));
                         mListItemsStartPosition++;
                     }
                 } else {
