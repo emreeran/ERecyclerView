@@ -1,20 +1,22 @@
 package com.emreeran.erecyclerview;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.emreeran.erecyclerview.loadmore.LoadMoreFooterLayout;
+import com.emreeran.erecyclerview.loadmore.LoadMoreFooterView;
+import com.emreeran.erecyclerview.loadmore.LoadMoreViewStateListener;
 import com.emreeran.erecyclerview.loadmore.OnLoadMoreListener;
 import com.emreeran.erecyclerview.pulltorefresh.OnRefreshListener;
-import com.emreeran.erecyclerview.pulltorefresh.SwipeRefreshHeaderLayout;
+import com.emreeran.erecyclerview.pulltorefresh.RefreshViewStateListener;
+import com.emreeran.erecyclerview.pulltorefresh.SwipeRefreshHeaderView;
 import com.emreeran.erecyclerview.quickreturn.QuickReturnRecyclerViewOnScrollListener;
 import com.emreeran.erecyclerview.quickreturn.QuickReturnViewType;
 
@@ -27,8 +29,8 @@ import java.util.HashMap;
  */
 public class ERecyclerView extends RecyclerView {
 
-    protected SwipeRefreshHeaderLayout mPullToRefreshView;
-    protected LoadMoreFooterLayout mLoadMoreView;
+    protected SwipeRefreshHeaderView mPullToRefreshView;
+    protected LoadMoreFooterView mLoadMoreView;
     protected ArrayList<View> mHeaderViewList = new ArrayList<>();
     protected ArrayList<View> mFooterViewList = new ArrayList<>();
     protected ArrayList<View> mInjectedViewList = new ArrayList<>();
@@ -124,7 +126,7 @@ public class ERecyclerView extends RecyclerView {
                 mLastY = ev.getRawY();
                 if (isOnTop() && isPullToRefresh) {
                     mPullToRefreshView.onSwipe(deltaY / DRAG_RATE);
-                    if (mPullToRefreshView.getVisibleHeight() > 0 && mPullToRefreshView.getState() < SwipeRefreshHeaderLayout.STATE_REFRESHING) {
+                    if (mPullToRefreshView.getVisibleHeight() > 0 && mPullToRefreshView.getState() < RefreshViewStateListener.STATE_REFRESHING) {
                         return false;
                     }
                 }
@@ -159,7 +161,7 @@ public class ERecyclerView extends RecyclerView {
                     layoutManager.getItemCount() > layoutManager.getChildCount()) {
 
                 if (isDataAvailable &&
-                        !(mPullToRefreshView != null && mPullToRefreshView.getState() >= SwipeRefreshHeaderLayout.STATE_REFRESHING)) {
+                        !(mPullToRefreshView != null && mPullToRefreshView.getState() >= RefreshViewStateListener.STATE_REFRESHING)) {
                     mLoadMoreView.onLoad();
                     isLoadingData = true;
                 }
@@ -192,16 +194,15 @@ public class ERecyclerView extends RecyclerView {
 
     // ---- QuickReturn end
 
-
-    public void setPullToRefreshView(SwipeRefreshHeaderLayout view) {
-        mPullToRefreshView = view;
-        mPullToRefreshView.onPrepare();
+    public void setPullToRefreshView(int resourceId, @Nullable RefreshViewStateListener listener) {
+        SwipeRefreshHeaderView view = new SwipeRefreshHeaderView(getContext());
+        mPullToRefreshView = view.createView(resourceId, listener);
         isPullToRefresh = true;
     }
 
-    public void setLoadMoreView(LoadMoreFooterLayout view) {
-        mLoadMoreView = view;
-        mLoadMoreView.onPrepare();
+    public void setLoadMoreView(int resourceId, @Nullable LoadMoreViewStateListener listener) {
+        LoadMoreFooterView view = new LoadMoreFooterView(getContext());
+        mLoadMoreView = view.createView(resourceId, listener);
         isLoadingMore = true;
     }
 
@@ -424,7 +425,7 @@ public class ERecyclerView extends RecyclerView {
         public int getItemViewType(int position) {
             if (mViewMap.containsKey(position)) {
                 if (position >= mFooterStartPosition) {
-                    if (mViewMap.get(position) instanceof LoadMoreFooterLayout) {
+                    if (mViewMap.get(position) instanceof LoadMoreFooterView) {
                         return ITEM_LOAD_MORE;
                     } else {
                         return ITEM_FOOTER;
@@ -433,7 +434,7 @@ public class ERecyclerView extends RecyclerView {
                     if (hasQuickReturnHeader && position == 0) {
                         return ITEM_PLACEHOLDER_HEADER;
                     }
-                    if (mViewMap.get(position) instanceof SwipeRefreshHeaderLayout) {
+                    if (mViewMap.get(position) instanceof SwipeRefreshHeaderView) {
                         return ITEM_REFRESH_HEADER;
                     } else {
                         return ITEM_HEADER;

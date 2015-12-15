@@ -3,6 +3,7 @@ package com.emreeran.erecyclerview;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -12,7 +13,7 @@ import android.widget.FrameLayout;
 public abstract class SwipeLayout extends FrameLayout {
 
     protected int mState;
-    protected ViewGroup mContainer;
+    protected View mView;
     protected int mMeasuredHeight;
 
     public SwipeLayout(Context context) {
@@ -44,13 +45,13 @@ public abstract class SwipeLayout extends FrameLayout {
             height = 0;
         }
 
-        LayoutParams layoutParams = (LayoutParams) mContainer.getLayoutParams();
+        LayoutParams layoutParams = (LayoutParams) mView.getLayoutParams();
         layoutParams.height = height;
-        mContainer.setLayoutParams(layoutParams);
+        mView.setLayoutParams(layoutParams);
     }
 
     public int getVisibleHeight() {
-        return ((LayoutParams) mContainer.getLayoutParams()).height;
+        return ((LayoutParams) mView.getLayoutParams()).height;
     }
 
     public void setState(int state) {

@@ -1,10 +1,12 @@
 package com.emreeran.erecyclerview.loadmore;
 
+import android.view.View;
+
 /**
  * Created by Emre Eran on 12/12/15.
  */
-public interface LoadMoreInterface {
-    void onPrepare();
+public interface LoadMoreViewStateListener {
+    void onViewCreated(View view);
 
     void onLoad();
 

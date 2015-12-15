@@ -14,7 +14,7 @@ import com.emreeran.erecyclerview.ERecyclerView;
 import com.emreeran.erecyclerview.loadmore.DefaultLoadMoreFooter;
 import com.emreeran.erecyclerview.loadmore.OnLoadMoreListener;
 import com.emreeran.erecyclerview.pulltorefresh.OnRefreshListener;
-import com.emreeran.erecyclerview.pulltorefresh.TwitterRefreshHeaderView;
+import com.emreeran.erecyclerview.pulltorefresh.TwitterRefreshHeader;
 
 import java.util.ArrayList;
 
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private int mItemCount = 0;
 
     private int mLoadTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         mERecyclerView.setLayoutManager(layoutManager);
 
         // Add pull to refresh header
-        TwitterRefreshHeaderView refreshHeader = new TwitterRefreshHeaderView(this);
-        mERecyclerView.setPullToRefreshView(refreshHeader);
+        mERecyclerView.setPullToRefreshView(TwitterRefreshHeader.getResource(), TwitterRefreshHeader.getListener());
         mERecyclerView.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -106,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
         mERecyclerView.addFooterView(footerView2);
 
         // Add load more
-        DefaultLoadMoreFooter loadMoreView = new DefaultLoadMoreFooter(this);
-        mERecyclerView.setLoadMoreView(loadMoreView);
+        mERecyclerView.setLoadMoreView(DefaultLoadMoreFooter.getResourceId(), null);
         mERecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
