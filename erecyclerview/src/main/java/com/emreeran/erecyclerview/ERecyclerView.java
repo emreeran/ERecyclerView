@@ -442,7 +442,13 @@ public class ERecyclerView extends RecyclerView {
                 }
             }
 
-            return adapter.getItemViewType(position);
+            if (adapter != null && adapter.getItemCount() > 0) {
+                int adapterPosition = position - mListItemsStartPosition;
+                adapterPosition -= getInjectedViewCountUntilPosition(position);
+                return adapter.getItemViewType(adapterPosition);
+            }
+
+            return 0;
         }
 
         @Override
