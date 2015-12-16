@@ -40,7 +40,10 @@ public class LoadMoreFooterView extends FrameLayout {
 
     public void onLoad() {
         setVisibility(VISIBLE);
-        mOnLoadMoreListener.onLoadMore();
+        if (mOnLoadMoreListener != null) {
+            mOnLoadMoreListener.onLoadMore();
+        }
+
         if (mLoadMoreViewStateListener != null) {
             mLoadMoreViewStateListener.onLoad();
         }

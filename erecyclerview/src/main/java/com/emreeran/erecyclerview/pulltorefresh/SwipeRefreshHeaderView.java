@@ -85,7 +85,9 @@ public class SwipeRefreshHeaderView extends SwipeLayout {
         // Check if is past refresh start threshold
         if (getVisibleHeight() > mMeasuredHeight && mState < RefreshViewStateListener.STATE_REFRESHING) {
             onRefresh();
-            mOnRefreshListener.onRefresh();
+            if (mOnRefreshListener != null) {
+                mOnRefreshListener.onRefresh();
+            }
         }
 
         if (mState == RefreshViewStateListener.STATE_REFRESHING) {

@@ -57,11 +57,10 @@ public class ERecyclerView extends RecyclerView {
 
     private static final int ITEM_REFRESH_HEADER = 1;
     private static final int ITEM_HEADER = 2;
-    private static final int ITEM_LIST = 3;
-    private static final int ITEM_FOOTER = 4;
-    private static final int ITEM_LOAD_MORE = 5;
-    private static final int ITEM_PLACEHOLDER_HEADER = 6;
-    private static final int ITEM_INJECTED = 7;
+    private static final int ITEM_FOOTER = 3;
+    private static final int ITEM_LOAD_MORE = 4;
+    private static final int ITEM_PLACEHOLDER_HEADER = 5;
+    private static final int ITEM_INJECTED = 6;
 
     public ERecyclerView(Context context) {
         this(context, null);
@@ -375,7 +374,6 @@ public class ERecyclerView extends RecyclerView {
                         mCurrentInjectedView = 0;
                     }
                     return new SimpleViewHolder(mViewMap.get(injectedViewPosition));
-                case ITEM_LIST:
                 default:
                     return adapter.onCreateViewHolder(parent, viewType);
             }
@@ -444,7 +442,7 @@ public class ERecyclerView extends RecyclerView {
                 }
             }
 
-            return ITEM_LIST;
+            return adapter.getItemViewType(position);
         }
 
         @Override
@@ -456,6 +454,8 @@ public class ERecyclerView extends RecyclerView {
             adapterPosition -= mInjectedViewList.size();
             return adapter.getItemId(adapterPosition);
         }
+
+
 
         public void setItemPositions() {
             mViewMap = new HashMap<>();
