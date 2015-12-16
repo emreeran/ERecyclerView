@@ -55,12 +55,12 @@ public class ERecyclerView extends RecyclerView {
     private View mQuickReturnHeaderView;
     private View mQuickReturnFooterView;
 
-    private static final int ITEM_REFRESH_HEADER = 1;
-    private static final int ITEM_HEADER = 2;
-    private static final int ITEM_FOOTER = 3;
-    private static final int ITEM_LOAD_MORE = 4;
-    private static final int ITEM_PLACEHOLDER_HEADER = 5;
-    private static final int ITEM_INJECTED = 6;
+    private static final int ITEM_REFRESH_HEADER = 9999991;
+    private static final int ITEM_HEADER = 9999992;
+    private static final int ITEM_FOOTER = 9999993;
+    private static final int ITEM_LOAD_MORE = 9999994;
+    private static final int ITEM_PLACEHOLDER_HEADER = 9999995;
+    private static final int ITEM_INJECTED = 9999996;
 
     public ERecyclerView(Context context) {
         this(context, null);
