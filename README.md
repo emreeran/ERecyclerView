@@ -78,7 +78,7 @@ Any number of views can be "injected" in available positions using the ```inject
 the target position as parameters. The new view will be inserted before the view that is in the target position.
 
 
-###Credits
+###Acknowledgements
 
 Quick return functionality is taken from **Etienne Lawlor**'s QuickReturn project https://github.com/lawloretienne/QuickReturn
 
@@ -86,6 +86,8 @@ The general idea and stating point of this project was from **jianghejie**'s XRe
 
 Many thanks
 
+###Credits
+Author Emre Eran (emre.eran@gmail.com - https://twitter.com/emreeran)
 
 ###License
 
