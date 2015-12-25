@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         mERecyclerView.addFooterView(footerView2);
 
         // Add load more
-        mERecyclerView.setLoadMoreView(DefaultLoadMoreFooter.getResourceId(), null);
+        mERecyclerView.setLoadMoreView(DefaultLoadMoreFooter.getResource(), null);
         mERecyclerView.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
