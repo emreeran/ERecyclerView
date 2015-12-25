@@ -12,7 +12,7 @@ import com.emreeran.erecyclerview.R;
  * Created by Emre Eran on 12/12/15.
  */
 public class DefaultLoadMoreFooter {
-    public static int getResourceId() {
+    public static int getResource() {
         return R.layout.layout_default_load_more;
     }
 }
