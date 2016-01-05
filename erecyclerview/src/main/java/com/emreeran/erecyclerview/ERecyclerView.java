@@ -187,6 +187,11 @@ public class ERecyclerView extends RecyclerView {
         mQuickReturnFooterView = view;
     }
 
+    public void setQuickReturnHeaderHeight(int height) {
+        mQuickReturnHeaderHeight = height;
+        mWrapAdapter.changeQuickReturnPlaceholderHeight(height);
+    }
+
     public void setQuickReturnViewsSnapable(boolean isSnapable) {
         this.isSnapable = isSnapable;
     }
@@ -461,7 +466,15 @@ public class ERecyclerView extends RecyclerView {
             return adapter.getItemId(adapterPosition);
         }
 
+        public void changeQuickReturnPlaceholderHeight(int height) {
+            if (hasQuickReturnHeader) {
+                View view = mViewMap.get(0);
+                ViewGroup.LayoutParams params = view.getLayoutParams();
+                params.height = height;
+                view.setLayoutParams(params);
 
+            }
+        }
 
         public void setItemPositions() {
             mViewMap = new HashMap<>();
