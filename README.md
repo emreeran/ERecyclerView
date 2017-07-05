@@ -15,7 +15,7 @@ ERecyclerView
 
 Usage
 -----
-###Include to your project
+**Include to your project**
 
 If using Gradle add jcenter to repositories
 
@@ -29,7 +29,7 @@ Add to your module dependencies
             compile 'com.emreeran.erecyclerview:erecyclerview:1.0.7'
         }
 
-###Adding ERecyclerView to your layout
+**Adding ERecyclerView to your layout**
 
 Just put **ERecyclerView** to the position you wish in your layout
  
@@ -39,9 +39,9 @@ Just put **ERecyclerView** to the position you wish in your layout
             
 Set a ```LayoutManager``` and your implementation of ```RecyclerView.Adapter``` just like any ```RecyclerView```
 
-###Properties
-
-######Refresh header
+Properties
+--------------
+**Refresh header**
 
 Refresh header can be set by calling ```setPullToRefreshView``` which takes a resource id as parameter and an optional
 ```RefreshViewStateListener```. You can use the available ```TwitterRefreshHeader``` by passing ```TwitterRefreshHeader.getResource()``` and
@@ -50,16 +50,16 @@ Refresh header can be set by calling ```setPullToRefreshView``` which takes a re
 For refresh operations call ```setOnRefreshListener``` and give your implementation of the 
 ```OnRefreshListener``` as its parameter.
  
-######Load more footer
+**Load more footer**
 
 Load more footer can be set by calling ```setLoadMoreView``` which takes a resource id as parameter and an optional 
-```LoadMoreViewStateListener```.  You can use the available ```DefaultLoadMoreFooter``` by passing ```DefaultLoadMoreFooter.getResource()
-``` as parameter.
+`LoadMoreViewStateListener`.  You can use the available ```DefaultLoadMoreFooter``` by passing `DefaultLoadMoreFooter.getResource()
+` as parameter.
 
 For load more operations call ```setOnLoadMoreListener```and give your implementation of the 
 ```OnLoadMoreListener``` as ites parameter.
 
-######Quick return views
+**Quick return views**
 
 Additional header and footer with quick return capability can be added to the layout. These views should be put on top of the 
 **ERecyclerView** in the layout (See sample application for layout arrangement example). Use ```setQuickReturnHeader``` and 
@@ -68,17 +68,17 @@ respective heights as parameters. Additionally snap views option can be set by `
  on release, returns its previous state (showing || not showing) if half of its height is not past scrolling, and changes to its next 
  state if that threshold is past.
   
-######Headers and footers
+**Headers and footers**
 
 Any number of header or footer views can be added using ```addHeaderView``` and ```addFooterView``` methods respectively.
 
-######Injecting views
+**Injecting views**
 
 Any number of views can be "injected" in available positions using the ```injectView``` method which takes the view to be injected and 
 the target position as parameters. The new view will be inserted before the view that is in the target position.
 
 
-###Acknowledgements
+**Acknowledgements**
 
 Quick return functionality is taken from **Etienne Lawlor**'s QuickReturn project https://github.com/lawloretienne/QuickReturn
 
@@ -86,10 +86,12 @@ The general idea and stating point of this project was from **jianghejie**'s XRe
 
 Many thanks
 
-###Credits
+**Credits**
+
 Author Emre Eran (emre.eran@gmail.com - https://twitter.com/emreeran)
 
-###License
+License
+-------
 
 
         Copyright 2015 Emre Eran
