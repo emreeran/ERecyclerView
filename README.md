@@ -26,7 +26,7 @@ If using Gradle add jcenter to repositories
 Add to your module dependencies
         
         dependencies {
-            compile 'com.emreeran.erecyclerview:erecyclerview:1.0.7'
+            compile 'com.emreeran.erecyclerview:erecyclerview:1.0.9'
         }
 
 **Adding ERecyclerView to your layout**
